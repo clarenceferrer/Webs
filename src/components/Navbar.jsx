@@ -8,7 +8,7 @@ const defaultLinks = [
   { label: 'How it works', to: '/how-it-works' },
 ]
 
-function Navbar({ links = defaultLinks, ctaText = 'Caregiver Access', ctaHref = '#' }) {
+function Navbar({ links = defaultLinks, ctaText = 'Caregiver Access', ctaTo = '/caregiver' }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -39,12 +39,12 @@ function Navbar({ links = defaultLinks, ctaText = 'Caregiver Access', ctaHref = 
         </div>
 
         <div className="flex items-center gap-3 md:gap-4">
-          <a
-            href={ctaHref}
+          <Link
+            to={ctaTo}
             className="hidden rounded-full border border-white/70 px-5 py-2 text-sm font-bold text-white transition-all hover:bg-white hover:text-[#2e6e8a] sm:inline-flex md:px-7 md:text-base lg:text-lg"
           >
             {ctaText}
-          </a>
+          </Link>
 
           <button
             type="button"
@@ -76,13 +76,13 @@ function Navbar({ links = defaultLinks, ctaText = 'Caregiver Access', ctaHref = 
               </NavLink>
             ))}
 
-            <a
-              href={ctaHref}
+            <Link
+              to={ctaTo}
               onClick={() => setIsMenuOpen(false)}
               className="mt-1 inline-flex w-full items-center justify-center rounded-full border border-white/70 px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-white hover:text-[#2e6e8a]"
             >
               {ctaText}
-            </a>
+            </Link>
           </div>
         </div>
       )}
